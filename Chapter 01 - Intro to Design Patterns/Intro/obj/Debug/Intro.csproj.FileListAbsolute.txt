@@ -1,0 +1,7 @@
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\obj\Debug\Intro.csprojResolveAssemblyReference.cache
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\obj\Debug\Intro.csproj.CoreCompileInputs.cache
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\bin\Debug\Intro.exe.config
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\bin\Debug\Intro.exe
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\bin\Debug\Intro.pdb
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\obj\Debug\Intro.exe
+C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\obj\Debug\Intro.pdb
