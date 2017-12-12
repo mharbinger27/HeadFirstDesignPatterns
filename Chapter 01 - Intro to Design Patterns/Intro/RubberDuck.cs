@@ -4,23 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Intro
+namespace Strategy
 {
-    class RubberDuck : Duck
+    public class RubberDuck : Duck
     {
-        public override void quack()
-        {
-            Console.WriteLine("quack(): Squeak squeak!");
-        }
+        public override void Display() => Console.WriteLine("I'm a rubber duck!");
 
         public RubberDuck()
         {
-            Console.WriteLine("RubberDuck(): A RubberDuck is born...");
-        }
-
-        public override void Display()
-        {
-            Console.WriteLine("Display(): That's a rubber duck!");
+            setFlyBehavior(new FlyNoWay());
+            setQuackBehavior(new Squeak());
         }
     }
 }

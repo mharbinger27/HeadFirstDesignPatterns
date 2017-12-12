@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Strategy
 {
-    public class RedheadDuck : Duck
+    class ModelDuck : Duck
     {
-        public override void Display() => Console.WriteLine("I'm a real redhead duck!");
-
-        public RedheadDuck()
+        public ModelDuck()
         {
             setFlyBehavior(new FlyNoWay());
-            setQuackBehavior(new Squeak());
+            setQuackBehavior(new Quack());
         }
+
+        public override void Display() => Console.WriteLine("I'm a model duck");
     }
 }

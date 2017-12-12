@@ -5,3 +5,10 @@ C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\bin\Debug\Intro
 C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\bin\Debug\Intro.pdb
 C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\obj\Debug\Intro.exe
 C:\Users\MLPos\Documents\Visual Studio 2017\Projects\Intro\Intro\obj\Debug\Intro.pdb
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\bin\Debug\Intro.exe.config
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\bin\Debug\Intro.exe
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\bin\Debug\Intro.pdb
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\obj\Debug\Intro.csprojResolveAssemblyReference.cache
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\obj\Debug\Intro.csproj.CoreCompileInputs.cache
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\obj\Debug\Intro.exe
+C:\Users\mharbinger\Documents\GitHub\HeadFirstDesignPatterns\Chapter 01 - Intro to Design Patterns\Intro\obj\Debug\Intro.pdb

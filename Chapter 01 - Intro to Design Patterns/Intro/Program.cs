@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Intro
+namespace Strategy
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Duck mallard = new MallardDuck();
-            mallard.DuckingAround();
+            Duck mallard = new MallardDuck(); // Constructs new MallardDuck object
+            mallard.performQuack();
+            mallard.performFly();
 
-            Duck redhead = new RedheadDuck();
-            redhead.DuckingAround();
-
-            Duck rubber = new RubberDuck();
-            rubber.DuckingAround();
+            Duck model = new ModelDuck(); // Constructs new ModelDuck object
+            model.performFly(); // initially calls default Fly() method defined in ModelDuck subclass to set behavior
+            model.setFlyBehavior(new FlyRocketPowered()); // Overrides default Fly() behavior
+            model.performFly();
         }
     }
 }

@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Intro
+namespace Strategy
 {
-    class MallardDuck : Duck
+    public class MallardDuck : Duck
     {
-        public override void Display()
-        {
-            Console.WriteLine("Display(): That's a mallard duck!");
-        }
+        public override void Display() => Console.WriteLine("I'm a real mallard duck!");
 
         public MallardDuck()
         {
-            Console.WriteLine("MallardDuck(): A MallardDuck is born...");
+            setFlyBehavior(new FlyWithWings()); // creates new FlyWithWings object
+            setQuackBehavior(new Quack()); // creates new Quack object
         }
     }
 }
