@@ -6,25 +6,35 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
-    class CurrentConditionsDisplay : IObserver, IDisplayElement
+    class CurrentConditionsDisplay : IObserver, IDisplayElement, IDisposable
     {
-        private float temperature;
-        private float humidity;
-        private ISubject weatherData;
+        private ISubject weatherData = null;
+        private Measurements measurements = new Measurements();
 
-        public CurrentConditionsDisplay(ISubject weatherData)
+        public CurrentConditionsDisplay(ISubject newWeatherData)
         {
-            this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
+            this.weatherData = newWeatherData;
+            this.weatherData.RegisterObserver(this);
         }
 
-        public void Display() => Console.WriteLine("Current conditions: " + temperature + "F degrees and " + humidity + "% humidity");
+        public void Display() => Console.WriteLine("Current conditions: {0}F degrees and {1}% humidity.", this.measurements.temperature, this.measurements.humidity);
 
-        public void Update(float temperature, float humidity, float pressure)
+        public void Update(Measurements newMeasurements)
         {
-            this.temperature = temperature;
-            this.humidity = humidity;
+            this.measurements = newMeasurements;
             Display();
         }
+
+        public void Dispose() => this.RemoveObserver();
+
+        private void RemoveObserver()
+        {
+            if (this.weatherData != null)
+            {
+                this.weatherData.RemoveObserver(this);
+            }
+        }
     }
+
+
 }

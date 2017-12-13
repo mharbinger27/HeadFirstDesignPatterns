@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
-    class StatisticsDisplay : IObserver, IDisplayElement
+    class StatisticsDisplay : IObserver, IDisplayElement, IDisposable
     {
+        private ISubject weatherData = null;
+        private Measurements measurements = new Measurements();
         private float maxTemp = 0.0f;
         private float minTemp = 200;
         private float tempSum = 0.0f;
         private int numReadings;
-        private WeatherData weatherData;
 
         public StatisticsDisplay(WeatherData weatherData)
         {
             this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
+            this.weatherData.RegisterObserver(this);
         }
 
-        public void Display() => Console.WriteLine("Avg/Max/Min temperature = " + (tempSum / numReadings) + "/" + maxTemp + "/" + minTemp);
+        public void Display() => Console.WriteLine("Avg/Max/Min temperature = {0}/{1}/{2} on {3} readings.", (tempSum/numReadings), maxTemp, minTemp, numReadings);
 
-        public void Update(float temp, float humidity, float pressure)
+        public void Update(Measurements newMeasurements)
         {
+            this.measurements = newMeasurements;
+            float temp = this.measurements.temperature;
             tempSum += temp;
             numReadings++;
 
@@ -38,6 +41,16 @@ namespace Observer
             }
 
             Display();
+        }
+
+        public void Dispose() => this.RemoveObserver();
+
+        private void RemoveObserver()
+        {
+            if (this.weatherData != null)
+            {
+                this.weatherData.RemoveObserver(this);
+            }
         }
     }
 }

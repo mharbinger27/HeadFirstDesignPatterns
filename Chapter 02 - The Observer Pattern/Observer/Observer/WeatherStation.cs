@@ -17,9 +17,23 @@ namespace Observer
             ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
             HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(weatherData);
 
-            weatherData.SetMeasurements(80, 65, 30.4f);
-            weatherData.SetMeasurements(82, 70, 29.2f);
-            weatherData.SetMeasurements(78, 90, 29.2f);
+            Measurements measurements = new Measurements
+            {
+                humidity = 65F,
+                pressure = 30.4F,
+                temperature = 80F
+            };
+            weatherData.SetMeasurements(measurements);
+
+            measurements.humidity = 70F;
+            measurements.pressure = 29.2F;
+            measurements.temperature = 82F;
+            weatherData.SetMeasurements(measurements);
+
+            measurements.humidity = 90F;
+            measurements.pressure = 29.2F;
+            measurements.temperature = 78F;
+            weatherData.SetMeasurements(measurements);
         }
     }
 }

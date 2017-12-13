@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
+    interface IDisplayElement
+    {
+        void Display();
+    }
+
+    interface IObserver
+    {
+        void Update(Measurements newMeasurements);
+    }
+
     interface ISubject
     {
         void RegisterObserver(IObserver o);

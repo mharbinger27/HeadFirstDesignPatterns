@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
-    class HeatIndexDisplay : IObserver, IDisplayElement
+    class HeatIndexDisplay : IObserver, IDisplayElement, IDisposable
     {
         float heatIndex = 0.0f;
-        private WeatherData weatherData;
+        private ISubject weatherData = null;
+        private Measurements measurements = new Measurements();
 
         public HeatIndexDisplay(WeatherData weatherData)
         {
@@ -17,12 +18,13 @@ namespace Observer
             weatherData.RegisterObserver(this);
         }
 
-        public void Display() => Console.WriteLine("Heat index is " + heatIndex);
+        public void Display() => Console.WriteLine("Heat index is {0}", heatIndex);
 
-        public void Update(float temp, float humidity, float pressure)
+        public void Update(Measurements newMeasurements)
         {
-            float t = weatherData.GetTemperature();
-            float rh = weatherData.GetHumidity();
+            this.measurements = newMeasurements;
+            float t = measurements.temperature;
+            float rh = measurements.humidity;
             heatIndex = (float)
                 (
                 (16.923 + (0.185212 * t)) +
@@ -42,6 +44,16 @@ namespace Observer
                 (0.0000000000481975 * (t * t * t * rh * rh * rh)));
 
             Display();
+        }
+
+        public void Dispose() => this.RemoveObserver();
+
+        public void RemoveObserver()
+        {
+            if (this.weatherData != null)
+            {
+                this.weatherData.RemoveObserver(this);
+            }
         }
     }
 }

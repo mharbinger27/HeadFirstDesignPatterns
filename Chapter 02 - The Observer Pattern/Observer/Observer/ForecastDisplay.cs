@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Observer
 {
-    class ForecastDisplay : IObserver, IDisplayElement
+    class ForecastDisplay : IObserver, IDisplayElement, IDisposable
     {
         private float currentPressure = 29.92f;
         private float lastPressure;
-        private WeatherData weatherData;
+        private ISubject weatherData = null;
+        private Measurements measurements = new Measurements();
 
         public ForecastDisplay(WeatherData weatherData)
         {
             this.weatherData = weatherData;
-            weatherData.RegisterObserver(this);
+            this.weatherData.RegisterObserver(this);
         }
 
         public void Display()
@@ -35,12 +36,23 @@ namespace Observer
             }
         }
 
-        public void Update(float temp, float humidity, float pressure)
+        public void Update(Measurements newMeasurements)
         {
+            this.measurements = newMeasurements;
             lastPressure = currentPressure;
-            currentPressure = weatherData.GetPressure();
+            currentPressure = measurements.pressure;
 
             Display();
+        }
+
+        public void Dispose() => this.RemoveObserver();
+
+        private void RemoveObserver()
+        {
+            if (this.weatherData != null)
+            {
+                this.weatherData.RemoveObserver(this);
+            }
         }
     }
 }
